@@ -1,0 +1,6 @@
+2022/12/05-14:41:11.541 d2cf Creating DB /home/marcelo/whatsapp_bot/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb since it was missing.
+2022/12/05-14:41:11.544 d2cf Reusing MANIFEST /home/marcelo/whatsapp_bot/tokens/session-name/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/12/05-14:41:11.595 d253 Level-0 table #5: started
+2022/12/05-14:41:11.598 d253 Level-0 table #5: 7006 bytes OK
+2022/12/05-14:41:11.601 d253 Delete type=0 #3
+2022/12/05-14:41:11.601 d253 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
