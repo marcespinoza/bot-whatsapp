@@ -15,9 +15,18 @@ venom
 
 function start(client) {
   client.onMessage((message) => {
-    if (message.body === 'Hi' && message.isGroupMsg === false) {
+    if (message.body === 'Hola' && message.isGroupMsg === false) {
       client
-        .sendText(message.from, 'Hola, bienvenido, decime tu nombre🕷')
+        .sendText(message.from, 'Genial, seleccioná que queres hacer')
+        .then((result) => {
+          console.log('Result: ', result); //return object success
+        })
+        .catch((erro) => {
+          console.error('Error when sending: ', erro); //return object error
+        });
+    }else{
+        client
+        .sendText(message.from, 'Hola, bienvenido al bot del Torneo, para comenzar enviá la palabra Hola')
         .then((result) => {
           console.log('Result: ', result); //return object success
         })
