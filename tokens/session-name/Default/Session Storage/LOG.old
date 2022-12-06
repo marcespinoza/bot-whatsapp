@@ -1,2 +1,3 @@
-2022/12/05-14:41:09.634 d253 Creating DB /home/marcelo/whatsapp_bot/tokens/session-name/Default/Session Storage since it was missing.
-2022/12/05-14:41:09.641 d253 Reusing MANIFEST /home/marcelo/whatsapp_bot/tokens/session-name/Default/Session Storage/MANIFEST-000001
+2022/12/05-23:17:37.165 11b6c Reusing MANIFEST /home/marcelo/whatsapp_bot/tokens/session-name/Default/Session Storage/MANIFEST-000001
+2022/12/05-23:17:37.165 11b6c Recovering log #3
+2022/12/05-23:17:37.165 11b6c Reusing old log /home/marcelo/whatsapp_bot/tokens/session-name/Default/Session Storage/000003.log 
