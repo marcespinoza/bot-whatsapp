@@ -18,26 +18,7 @@ venom
 function start(client) {
   client.onMessage(async (message) => {
   
-    const buttons = [
-        {
-          "buttonText": {
-            "displayText": "Text of Button 1"
-            }
-          },
-        {
-          "buttonText": {
-            "displayText": "Text of Button 2"
-            }
-          }
-        ]
-        showWelcomeButtons();
-//       await client.sendButtons(message.from, 'Title', buttons, 'Description')
-//         .then((result) => {
-//     console.log('Result: ', result); //return object success
-//   })
-//   .catch((erro) => {
-//     console.error('Error when sending: ', erro); //return object error
-//   });
+  
   });
 }
 
