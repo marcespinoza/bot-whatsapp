@@ -2,6 +2,8 @@ const venom = require('venom-bot');
 const xl = require('excel4node');
 const wb = new xl.Workbook();
 const ws = wb.addWorksheet('Worksheet Name'); 
+const { google } = require("googleapis");
+
 
 venom
   .create({
@@ -14,27 +16,72 @@ venom
   });
 
 function start(client) {
-  client.onMessage((message) => {
-    if (message.body === 'Hola' && message.isGroupMsg === false) {
-      client
-        .sendText(message.from, 'Genial, seleccioná que queres hacer')
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        });
-    }else{
-        client
-        .sendText(message.from, 'Hola, bienvenido al bot del Torneo, para comenzar enviá la palabra Hola')
-        .then((result) => {
-          console.log('Result: ', result); //return object success
-        })
-        .catch((erro) => {
-          console.error('Error when sending: ', erro); //return object error
-        });
-    }
+  client.onMessage(async (message) => {
+  
+    const buttons = [
+        {
+          "buttonText": {
+            "displayText": "Text of Button 1"
+            }
+          },
+        {
+          "buttonText": {
+            "displayText": "Text of Button 2"
+            }
+          }
+        ]
+        showWelcomeButtons();
+//       await client.sendButtons(message.from, 'Title', buttons, 'Description')
+//         .then((result) => {
+//     console.log('Result: ', result); //return object success
+//   })
+//   .catch((erro) => {
+//     console.error('Error when sending: ', erro); //return object error
+//   });
   });
+}
+
+  async function showWelcomeButtons(){
+
+    const auth = new google.auth.GoogleAuth({
+        keyFile: "credentials.json",
+        scopes: "https://www.googleapis.com/auth/spreadsheets",
+      });
+    
+      // Create client instance for auth
+      const client = await auth.getClient();
+    
+      // Instance of Google Sheets API
+      const googleSheets = google.sheets({ version: "v4", auth: client });
+    
+      const spreadsheetId = "1927xBquC0QfIBcOHXZ93LfXGbz1RRENP9e3nWXQP3n4";
+    
+      // Get metadata about spreadsheet
+      const metaData = await googleSheets.spreadsheets.get({
+        auth,
+        spreadsheetId,
+      });
+    
+      // Read rows from spreadsheet
+      const getRows = await googleSheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId,
+        range: "inscriptos!A:A",
+      });
+    
+      //Write row(s) to spreadsheet
+      await googleSheets.spreadsheets.values.append({
+        auth,
+        spreadsheetId,
+        range: "inscriptos!A:F",
+        valueInputOption: "USER_ENTERED",
+        resource: {
+          values: {values:['marcelo']},
+        },
+      });
+    
+      console.log("Successfully submitted! Thank you!"+getRows.data);
+  }
 
   const headingColumnNames = [
     "Name",
@@ -64,4 +111,3 @@ data.forEach( record => {
     rowIndex++;
 });
 wb.write('filename.xlsx');
-}

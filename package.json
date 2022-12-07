@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "@google-cloud/local-auth": "^2.1.0",
     "excel4node": "^1.8.0",
+    "googleapis": "^105.0.0",
     "venom-bot": "^4.3.7"
   },
   "scripts": {
